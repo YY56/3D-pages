@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>transition</title>
+	<style>
+		
+
+		<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#my-3D{
+			-webkit-perspective:800px;
+			-webkit-perspective-origin:50% 50%;
+			
+			overflow: hidden;
+
+		}
+		#page-group{
+			width: 150px;
+			height: 150px;
+			margin: 0 auto;
+			-webkit-transform-style:preserve-3d;
+			
+
+			position: relative;
+		}
+		.page{
+			position: absolute;
+			width: 150px;
+			height: 150px;
+
+			background-color: #900;
+			
+
+			color: #FFF;
+
+			font-weight: bold;
+			font-size: 150px;
+			line-height: 150px;
+			text-align: center;
+			
+		}
+		#btn a{
+			float: left;
+			width: 40px;
+			height: 20px;
+			text-decoration:none;
+			color: #fff;
+			background: #444;
+			display: block;
+			font-weight: bold;
+			margin-left: 10px;
+			text-align: center;
+		}
+		#btn{
+			width: 100px;
+			margin: 40px auto;
+
+		}
+		#page1{
+			-webkit-transform-origin:bottom;
+			-webkit-transition:-webkit-transform 1s ease;
+
+		}
+		#page2,#page3,#page4,#page5,#page6{
+			-webkit-transform-origin:bottom;
+			-webkit-transition:-webkit-transform 1s ease;
+			-webkit-transform:rotateX(90deg);
+
+
+			
+		}
+
+			</style>
+
+
+
+		</style>
+	</head>
+	<body>
+		<div id="my-3D">
+			<div id="page-group">
+				<div class="page" id="page1">1</div>
+				<div class="page" id="page2">2</div>
+				<div class="page" id="page3">3</div>
+				<div class="page" id="page4">4</div>
+				<div class="page" id="page5">5</div>
+				<div class="page" id="page6">6</div>
+			</div>
+		</div>
+		<div id="btn">
+			<a href="javascript:next()">next</a>
+			<a href="javascript:prev()">prev</a>
+		</div>
+
+	</body>
+	<script>
+		var curIndex = 1;
+		function next() {
+			if(curIndex ==6)
+				return;
+			var curPage = document.getElementById('page'+curIndex);
+			curPage.style.webkitTransform = 'rotateX(-90deg)';
+			curIndex ++;
+			var nextPage = document.getElementById('page'+curIndex);
+			nextPage.style.webkitTransform = 'rotateX(0deg)';
+
+
+
+		}
+		function prev() {
+			if(curIndex ==1)
+				return;
+			var curPage = document.getElementById('page'+curIndex);
+			curPage.style.webkitTransform = 'rotateX(90deg)';
+			curIndex --;
+			var nextPage = document.getElementById('page'+curIndex);
+			nextPage.style.webkitTransform = 'rotateX(0deg)';
+		}
+	</script>
+	</html>
